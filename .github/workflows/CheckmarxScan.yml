@@ -1,7 +1,18 @@
-- name: Checkmarx AST Github Action
-  uses: Checkmarx/ast-github-action@2.0.23
-  with:
-    base_uri: https://marketaxess.checkmarx.com
-    cx_tenant: ${{ secrets.cx_tenant }}
-    cx_client_id: ${{ secrets.cx_client_id }}
-    cx_client_secret: ${{ secrets.cx_client_secret }}
+name: Checkmarx AST Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checkmarx_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkmarx AST Github Action
+        uses: Checkmarx/ast-github-action@2.0.23
+        with:
+          base_uri: https://marketaxess.checkmarx.com
+          cx_tenant: ${{ secrets.cx_tenant }}
+          cx_client_id: ${{ secrets.cx_client_id }}
+          cx_client_secret: ${{ secrets.cx_client_secret }}
