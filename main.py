@@ -4,3 +4,9 @@ def test_sum():
 
 test_sum()
 print("Everything passed")
+
+def main():
+    print("Hello, World!")
+
+if __name__ == "__main__":
+    main()
