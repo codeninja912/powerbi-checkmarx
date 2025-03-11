@@ -12,7 +12,7 @@ jobs:
       - name: Checkmarx AST Github Action
         uses: Checkmarx/ast-github-action@2.0.23
         with:
-          base_uri: https://ast.checkmarx.net
+          base_uri: https://us.ast.checkmarx.net
           cx_tenant: marketaxess
           cx_client_id: ${{ secrets.cx_client_id }}
           cx_client_secret: ${{ secrets.cx_client_secret }}
