@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-       uses: actions/checkout@v2
-        with:
+      uses: actions/checkout@v2
+      with:
           base_uri: https://us.ast.checkmarx.net
           cx_tenant: marketaxess
           cx_client_id: ${{ secrets.cx_client_id }}
