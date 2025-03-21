@@ -21,7 +21,7 @@ try {
         System.out.println(s);
     }
 } 
-catch (IOException e) {
+catch (IOException e) { 
     System.out.println("Error executing command");
 }
 }
