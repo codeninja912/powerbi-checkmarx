@@ -1,34 +1,29 @@
-package org.joychou.config;
- 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
- 
- 
-/**
- * 为了不要每次调用都解析safedomain的xml，所以将解析动作放在Bean里。
- */
-@Configuration
-public class SafeDomainConfig {
- 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SafeDomainConfig.class);
- 
-    @Bean // @Bean代表将safeDomainParserf方法返回的对象装配到SpringIOC容器中
-    public SafeDomainParser safeDomainParser() {
-        try {
-            LOGGER.info("SafeDomainParser bean inject successfully!!!");
-            return new SafeDomainParser();
-        } catch (Exception e) {
-            LOGGER.error("SafeDomainParser is null " + e.getMessage(), e);
-        }
-        return null;
-    }
- 
-}
+import java.util.*; 
+import java.io.File;
+import java.io.*;
 
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
+public class command_injection{ 
+public static void main(String[] args){ 
+Scanner sc=new Scanner(System.in); 
+System.out.println("Enter Username"); 
+String user = sc.nextLine();
+
+String user_path = ".\\Data\\"+user;
+
+File file = new File(user_path);
+
+try {
+    String comm = "cmd.exe /c dir "+user_path;
+    Process process = Runtime.getRuntime().exec(comm);
+    BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+    String s = null;
+    while ((s = stdInput.readLine()) != null) {
+        System.out.println(s);
     }
+}
+catch (IOException e) {
+    System.out.println("Error executing command");
+}
+}
 }
