@@ -1,6 +1,5 @@
-import java.util.*; 
-import java.io.File;
 import java.io.*;
+import java.util.*;
 
 public class command_injection{ 
 public static void main(String[] args){ 
@@ -21,7 +20,7 @@ try {
     while ((s = stdInput.readLine()) != null) {
         System.out.println(s);
     }
-}
+} 
 catch (IOException e) {
     System.out.println("Error executing command");
 }
